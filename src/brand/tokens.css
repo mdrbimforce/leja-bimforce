@@ -1,0 +1,153 @@
+/* Leja stijlpakket 0.1.0: tokens.
+ * GEGENEREERD uit tokens.json door scripts/build.mjs. Pas tokens.json aan, niet dit bestand.
+ *
+ * Thema: het apparaat bepaalt licht of donker; data-theme="light" of "dark" op <html>
+ * (of op een los element) wint daarvan.
+ * Breekpunten (kunnen niet als custom property in een media query):
+ *   sm 640px · md 960px · lg 1280px
+ */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --lj-ground: #f3f5f7;
+  --lj-surface: #fdfdfd;
+  --lj-sunken: #e7ecef;
+  --lj-ink: #1c2a41;
+  --lj-ink-2: #475365;
+  --lj-ink-3: #5f6977;
+  --lj-line: #d9dee4;
+  --lj-line-strong: #788290;
+  --lj-brand: #1c2a41;
+  --lj-on-brand: #e7ecef;
+  --lj-on-brand-2: #9fb0c3;
+  --lj-brand-line: #2e3f5a;
+  --lj-accent: #0c6980;
+  --lj-accent-hover: #0a5568;
+  --lj-on-accent: #fdfdfd;
+  --lj-accent-soft: #dff1f4;
+  --lj-spark: #e0a526;
+  --lj-on-spark: #1c2a41;
+  --lj-spark-soft: #fbefd2;
+  --lj-ok: #27724d;
+  --lj-ok-soft: #e1f2e8;
+  --lj-warn: #8a5a12;
+  --lj-warn-soft: #fbf0d6;
+  --lj-err: #c53030;
+  --lj-err-soft: #fde8e8;
+  --lj-never: #1c2a41;
+  --lj-on-never: #e7ecef;
+  --lj-scrim: rgb(12 22 38 / 0.45);
+  --lj-shadow-1: 0 1px 2px rgb(12 22 38 / 0.08), 0 1px 1px rgb(12 22 38 / 0.04);
+  --lj-shadow-2: 0 8px 28px rgb(12 22 38 / 0.12), 0 2px 6px rgb(12 22 38 / 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --lj-ground: #0f1826;
+    --lj-surface: #172234;
+    --lj-sunken: #1f2d43;
+    --lj-ink: #e7ecef;
+    --lj-ink-2: #abb8c6;
+    --lj-ink-3: #8c99a8;
+    --lj-line: #2a3a52;
+    --lj-line-strong: #6a7c96;
+    --lj-brand: #0b1320;
+    --lj-on-brand: #e7ecef;
+    --lj-on-brand-2: #8593a3;
+    --lj-brand-line: #1f2d43;
+    --lj-accent: #35b8c4;
+    --lj-accent-hover: #5ccbd5;
+    --lj-on-accent: #0b1320;
+    --lj-accent-soft: #163a44;
+    --lj-spark: #f0b840;
+    --lj-on-spark: #0b1320;
+    --lj-spark-soft: #3a2f14;
+    --lj-ok: #5cc28b;
+    --lj-ok-soft: #173627;
+    --lj-warn: #e6b450;
+    --lj-warn-soft: #3a2f14;
+    --lj-err: #f08080;
+    --lj-err-soft: #40201f;
+    --lj-never: #0b1320;
+    --lj-on-never: #e7ecef;
+    --lj-scrim: rgb(4 8 14 / 0.6);
+    --lj-shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+    --lj-shadow-2: 0 10px 32px rgb(0 0 0 / 0.55), 0 0 0 1px rgb(42 58 82 / 0.6);
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --lj-ground: #0f1826;
+  --lj-surface: #172234;
+  --lj-sunken: #1f2d43;
+  --lj-ink: #e7ecef;
+  --lj-ink-2: #abb8c6;
+  --lj-ink-3: #8c99a8;
+  --lj-line: #2a3a52;
+  --lj-line-strong: #6a7c96;
+  --lj-brand: #0b1320;
+  --lj-on-brand: #e7ecef;
+  --lj-on-brand-2: #8593a3;
+  --lj-brand-line: #1f2d43;
+  --lj-accent: #35b8c4;
+  --lj-accent-hover: #5ccbd5;
+  --lj-on-accent: #0b1320;
+  --lj-accent-soft: #163a44;
+  --lj-spark: #f0b840;
+  --lj-on-spark: #0b1320;
+  --lj-spark-soft: #3a2f14;
+  --lj-ok: #5cc28b;
+  --lj-ok-soft: #173627;
+  --lj-warn: #e6b450;
+  --lj-warn-soft: #3a2f14;
+  --lj-err: #f08080;
+  --lj-err-soft: #40201f;
+  --lj-never: #0b1320;
+  --lj-on-never: #e7ecef;
+  --lj-scrim: rgb(4 8 14 / 0.6);
+  --lj-shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+  --lj-shadow-2: 0 10px 32px rgb(0 0 0 / 0.55), 0 0 0 1px rgb(42 58 82 / 0.6);
+}
+
+:root {
+  --lj-logo-navy: #1c2a41;
+  --lj-logo-teal: #35b8c4;
+  --lj-logo-teal-deep: #0c6980;
+  --lj-logo-amber: #e0a526;
+  --lj-font-sans: 'Source Sans 3', 'Myriad Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --lj-font-mono: 'Source Code Pro', Consolas, Monaco, monospace;
+  --lj-weight-regular: 400;
+  --lj-weight-semibold: 600;
+  --lj-weight-bold: 700;
+  --lj-text-12: 0.75rem;
+  --lj-text-13: 0.8125rem;
+  --lj-text-14: 0.875rem;
+  --lj-text-16: 1rem;
+  --lj-text-20: 1.25rem;
+  --lj-text-24: 1.5rem;
+  --lj-text-32: 2rem;
+  --lj-text-site-body: 1.0625rem;
+  --lj-leading-tight: 1.15;
+  --lj-leading-snug: 1.3;
+  --lj-leading-normal: 1.5;
+  --lj-space-1: 4px;
+  --lj-space-2: 8px;
+  --lj-space-3: 12px;
+  --lj-space-4: 16px;
+  --lj-space-6: 24px;
+  --lj-space-8: 32px;
+  --lj-space-12: 48px;
+  --lj-radius-control: 4px;
+  --lj-radius-card: 8px;
+  --lj-radius-pill: 999px;
+  --lj-z-nav: 100;
+  --lj-z-panel: 200;
+  --lj-z-dialog: 300;
+  --lj-z-toast: 400;
+  --lj-motion-fast: 120ms;
+  --lj-motion-base: 200ms;
+  --lj-motion-ease: cubic-bezier(0.2, 0, 0, 1);
+}

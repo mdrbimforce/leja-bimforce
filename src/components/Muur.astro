@@ -1,0 +1,69 @@
+---
+// De muur in één beeld (positioneringsvoorstel §3 en §7; tekening uit de AICC-talk van 13-10-2026).
+// Binnen de hal: de kennis van de organisatie als graph, met één amber kern. Buiten: het model,
+// als huurkraan die wisselt. De portier bij de deur: de enige weg naar binnen, onder regie.
+// Kleuren zijn rollen uit het stijlpakket, zodat het beeld licht en donker volgt.
+---
+
+<svg viewBox="0 0 640 290" role="img" aria-labelledby="muur-titel muur-omschrijving" class="w-full h-auto">
+  <title id="muur-titel">De hal en de huurkraan</title>
+  <desc id="muur-omschrijving">Een machinehal met daarin de kennis van de organisatie als een graph van verbonden knooppunten. Buiten de hal staat een huurkraan: het AI-model. Bij de deur staat een portier.</desc>
+
+  <!-- grond -->
+  <line x1="12" y1="244" x2="628" y2="244" stroke="var(--lj-line-strong)" stroke-width="2" />
+
+  <!-- de hal -->
+  <polygon points="40,104 190,36 340,104" fill="var(--lj-brand)" />
+  <rect x="40" y="104" width="300" height="140" fill="var(--lj-surface)" stroke="var(--lj-ink)" stroke-width="2" />
+  <text x="190" y="88" text-anchor="middle" fill="var(--lj-on-brand)" style="font-size:13px; font-weight:700;">jouw organisatie</text>
+
+  <!-- de deur, met de portier -->
+  <rect x="286" y="150" width="46" height="94" fill="var(--lj-sunken)" stroke="var(--lj-ink)" stroke-width="1.5" />
+  <g aria-hidden="true">
+    <circle cx="309" cy="176" r="8" fill="var(--lj-surface)" stroke="var(--lj-ink)" stroke-width="2" />
+    <line x1="309" y1="184" x2="309" y2="214" stroke="var(--lj-ink)" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="309" y1="194" x2="296" y2="206" stroke="var(--lj-ink)" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="309" y1="194" x2="324" y2="200" stroke="var(--lj-ink)" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="309" y1="214" x2="300" y2="238" stroke="var(--lj-ink)" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="309" y1="214" x2="318" y2="238" stroke="var(--lj-ink)" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+  <text x="309" y="262" text-anchor="middle" fill="var(--lj-ink-3)" style="font-size:11px; font-weight:600;">de portier</text>
+
+  <!-- de kennis: een graph met één kern -->
+  <g stroke="var(--lj-ink-2)" stroke-width="2">
+    <line x1="100" y1="160" x2="152" y2="134" />
+    <line x1="100" y1="160" x2="142" y2="198" />
+    <line x1="152" y1="134" x2="200" y2="166" />
+    <line x1="142" y1="198" x2="200" y2="166" />
+    <line x1="100" y1="160" x2="92" y2="206" />
+    <line x1="152" y1="134" x2="178" y2="150" />
+    <line x1="200" y1="166" x2="178" y2="150" />
+    <line x1="200" y1="166" x2="240" y2="140" />
+    <line x1="240" y1="140" x2="178" y2="150" />
+  </g>
+  <circle cx="100" cy="160" r="12" fill="var(--lj-accent)" />
+  <circle cx="152" cy="134" r="10" fill="var(--lj-accent)" />
+  <circle cx="142" cy="198" r="11" fill="var(--lj-accent)" />
+  <circle cx="200" cy="166" r="10" fill="var(--lj-accent)" />
+  <circle cx="92" cy="206" r="8" fill="var(--lj-accent)" />
+  <circle cx="240" cy="140" r="9" fill="var(--lj-accent)" />
+  <circle cx="178" cy="150" r="9" fill="var(--lj-spark)" />
+  <text x="160" y="232" text-anchor="middle" fill="var(--lj-ink)" style="font-size:14px; font-weight:700;">de kennis: bezit</text>
+
+  <!-- het model: een huurkraan die wisselt -->
+  <g transform="translate(490,244) scale(1.25)" aria-hidden="true">
+    <rect x="-50" y="-30" width="78" height="20" rx="3" fill="var(--lj-sunken)" stroke="var(--lj-ink)" stroke-width="1.5" />
+    <path d="M 28,-10 L 28,-40 L 46,-40 L 54,-26 L 54,-10 Z" fill="var(--lj-sunken)" stroke="var(--lj-ink)" stroke-width="1.5" stroke-linejoin="round" />
+    <rect x="34" y="-36" width="12" height="9" fill="var(--lj-accent-soft)" stroke="var(--lj-ink)" stroke-width="1" />
+    <circle cx="-36" cy="-8" r="8" fill="var(--lj-ink-2)" stroke="var(--lj-ink)" stroke-width="1.5" />
+    <circle cx="-12" cy="-8" r="8" fill="var(--lj-ink-2)" stroke="var(--lj-ink)" stroke-width="1.5" />
+    <circle cx="40" cy="-8" r="8" fill="var(--lj-ink-2)" stroke="var(--lj-ink)" stroke-width="1.5" />
+    <line x1="-30" y1="-30" x2="20" y2="-96" stroke="var(--lj-spark)" stroke-width="7" stroke-linecap="round" />
+    <line x1="20" y1="-96" x2="20" y2="-66" stroke="var(--lj-ink)" stroke-width="1.2" />
+    <path d="M 16,-66 Q 20,-58 24,-66" fill="none" stroke="var(--lj-ink)" stroke-width="1.6" />
+    <text x="-4" y="-18" text-anchor="middle" fill="var(--lj-ink)" style="font-size:11px; font-weight:700;">model</text>
+  </g>
+  <text x="490" y="268" text-anchor="middle" fill="var(--lj-ink)" style="font-size:14px; font-weight:700;">het model: huur</text>
+  <path d="M 560,120 q 30,-30 44,-4" fill="none" stroke="var(--lj-ink-3)" stroke-width="1.5" stroke-dasharray="4 4" />
+  <text x="586" y="104" text-anchor="middle" fill="var(--lj-ink-3)" style="font-size:11px;">wisselt</text>
+</svg>

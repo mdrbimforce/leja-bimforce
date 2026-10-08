@@ -1,0 +1,23 @@
+{
+  "name": "leja-bimforce",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "leja.bimforce.com — productsite van Leja, de AI-kennispartner van bimforce. Astro 5 + Tailwind met het Leja-stijlpakket, op Cloudflare Pages.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.1.4",
+    "@tailwindcss/typography": "^0.5.19",
+    "tailwindcss": "^3.4.16"
+  }
+}

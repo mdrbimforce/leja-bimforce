@@ -1,0 +1,185 @@
+---
+// Homepagina leja.bimforce.com — eerste versie (8 oktober 2026, quest-143 step-03 / quest-144 sessie 8).
+// Tekst volgt leja-brain documents/marketing/2026-09-30-leja-positionering-voorstel.md
+// (§1 in het kort, §3 de muur, §4b naast GRiDS, §7 het verhaal, §8 drie pijlers, §11 de homepagina).
+// Alleen de homepagina; de overige pagina's uit §11 volgen (quest-143 step-04).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Muur from '../components/Muur.astro';
+import cijfers from '../../data/cijfers.json';
+
+const getal = new Intl.NumberFormat('nl-NL');
+const datum = (iso: string) =>
+  new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' }).format(new Date(`${iso}T12:00:00Z`));
+const maand = (iso: string) =>
+  new Intl.DateTimeFormat('nl-NL', { month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' }).format(new Date(`${iso}-01T12:00:00Z`));
+
+const pijlers = [
+  {
+    id: 'geheugen',
+    kop: 'Geheugen',
+    zin: 'Wat je organisatie leert, blijft.',
+    tekst:
+      'Kennis, beslissingen, inzichten en fouten staan in één knowledge graph, met de sessies waarin ze ontstonden. Elke sessie legt doorlopend vast; een wekelijkse ronde consolideert losse notities tot kennis die terugkomt op het moment dat ze nodig is.',
+    punten: ['Knowledge graph van de organisatie', 'Beslissingen, inzichten, fouten, sessies', 'Doorlopend vastleggen, wekelijks consolideren'],
+    dashboard: 'In het dashboard: de groep Geheugen.',
+  },
+  {
+    id: 'regie',
+    kop: 'Regie',
+    zin: 'Jij bepaalt wat AI zelf mag doen.',
+    tekst:
+      'Werkafspraken staan als protocollen vast. Elke route heeft een niveau: automatisch, na goedkeuring, of nooit. Elke wijziging laat een spoor na: wie, wat, wanneer, waarop. Een mens beslist waar dat hoort.',
+    punten: ['Protocollen en routes met drie niveaus', 'Goedkeuren door een mens', 'Een spoor per wijziging, wekelijkse controle'],
+    dashboard: 'In het dashboard: de groepen Werk en Routes.',
+  },
+  {
+    id: 'eigendom',
+    kop: 'Eigendom',
+    zin: 'Jouw kennis op jouw server; het model huur je.',
+    tekst:
+      'Leja draait op een eigen server of op een server die bimforce beheert. Het model is te wisselen: een lokaal model voor het dagelijkse werk, een groot model via een gateway waar dat loont. Wisselt het model, dan blijft het geheugen staan.',
+    punten: ['Eigen server of beheerd door bimforce', 'Lokaal model, gateway naar grote modellen', 'Modelonafhankelijk, met back-ups'],
+    dashboard: 'In het dashboard: de groep Beheer.',
+  },
+];
+
+const kerncijfers = [
+  { label: 'sessies', waarde: cijfers.sessies },
+  { label: 'geheugenfragmenten', waarde: cijfers.geheugenfragmenten },
+  { label: 'beslissingen', waarde: cijfers.beslissingen },
+  { label: 'inzichten', waarde: cijfers.inzichten },
+  { label: 'geregistreerde fouten', waarde: cijfers.fouten },
+  { label: 'kennisartikelen', waarde: cijfers.kennisartikelen },
+  { label: 'actieve protocollen', waarde: cijfers.protocollen },
+  { label: 'actieve routes', waarde: cijfers.routes },
+];
+---
+
+<BaseLayout title="Leja">
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pt-14 sm:pt-20 pb-10 grid gap-10 md:grid-cols-12 md:items-center">
+    <div class="md:col-span-6">
+      <p class="text-lj-14 font-semibold uppercase tracking-wide text-ink-3">Leja, de AI-kennispartner van bimforce</p>
+      <h1 class="mt-3 text-lj-32 sm:text-[2.75rem]">Huur het model, bezit de kennis.</h1>
+      <p class="mt-3 text-lj-20 text-ink-2">Modellen wisselen. Het geheugen blijft.</p>
+      <p class="mt-6 max-w-prose">
+        Leja is een eigen bedrijfsgeheugen met vaste werkafspraken, waar elk AI-model op kan werken.
+        Geïnstalleerd op jouw eigen server, of op een server die bimforce beheert.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#contact" class="knop knop-accent">Plan een gesprek</a>
+        <a href="#pijlers" class="knop knop-stil">Hoe het werkt</a>
+      </div>
+    </div>
+    <div class="md:col-span-6">
+      <div class="bg-surface rounded-card shadow-1 border border-line p-4 sm:p-6">
+        <Muur />
+      </div>
+    </div>
+  </section>
+
+  <!-- De muur -->
+  <section id="muur" class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 scroll-mt-20">
+    <div class="grid gap-8 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <h2 class="text-lj-24 sm:text-lj-32">Waarom een eigen geheugen</h2>
+      </div>
+      <div class="md:col-span-7 space-y-4 max-w-prose">
+        <p>
+          AI-modellen vergeten alles na elke sessie, en ze wisselen om de paar maanden. Wat je organisatie leert,
+          verdampt dan in losse chats, en wie zich vastlegt op één model, legt zich vast op de stand van vandaag.
+        </p>
+        <p>
+          Wat je organisatie leert, hoort op één plek te staan die van jou is en die blijft staan als het model wisselt.
+          Dat is de hal: binnen staat de kennis, buiten staat de kraan die je huurt, en bij de deur staat de portier die
+          bepaalt wat naar binnen gaat en wat naar buiten.
+        </p>
+        <p>
+          Zo bouwt AI elke week voort op wat jouw organisatie al weet, zijn acties te verantwoorden, en ben je vrij om
+          van model te wisselen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drie pijlers -->
+  <section id="pijlers" class="bg-surface border-y border-line scroll-mt-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
+      <h2 class="text-lj-24 sm:text-lj-32">Drie pijlers</h2>
+      <p class="mt-2 text-ink-2 max-w-prose">Wie de site heeft gelezen, herkent het dashboard; wie het dashboard ziet, begrijpt het product.</p>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        {pijlers.map((p) => (
+          <article id={p.id} class="bg-ground rounded-card border border-line p-6 flex flex-col">
+            <h3 class="text-lj-20">{p.kop}</h3>
+            <p class="mt-1 font-semibold text-accent">{p.zin}</p>
+            <p class="mt-4 text-lj-16">{p.tekst}</p>
+            <ul class="mt-4 space-y-1 text-lj-14 text-ink-2">
+              {p.punten.map((punt) => (
+                <li class="flex gap-2"><span aria-hidden="true" class="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-pill bg-accent"></span><span>{punt}</span></li>
+              ))}
+            </ul>
+            <p class="mt-auto pt-4 text-lj-13 text-ink-3">{p.dashboard}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bewijscijfers -->
+  <section id="cijfers" class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 scroll-mt-20">
+    <div class="grid gap-8 md:grid-cols-12 md:items-start">
+      <div class="md:col-span-5">
+        <h2 class="text-lj-24 sm:text-lj-32">Uit onze eigen Leja</h2>
+        <p class="mt-3 text-ink-2 max-w-prose">
+          Wij werken zelf met Leja sinds {maand(cijfers.in_gebruik_sinds)}. Deze aantallen komen uit onze eigen graph en worden dagelijks bijgewerkt.
+          Alleen aantallen; de inhoud blijft binnen.
+        </p>
+        <p class="mt-3 text-lj-13 text-ink-3">
+          Stand van {datum(cijfers.stand)}. Laatste wekelijkse controleronde: {datum(cijfers.laatste_vrijdagronde)}.
+        </p>
+      </div>
+      <dl class="md:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {kerncijfers.map((c) => (
+          <div class="bg-surface rounded-card border border-line p-4">
+            <dd class="cijfer text-lj-24 sm:text-lj-32 font-semibold text-ink">{getal.format(c.waarde)}</dd>
+            <dt class="mt-1 text-lj-13 text-ink-3">{c.label}</dt>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- Naast GRiDS -->
+  <section id="grids" class="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">
+    <div class="bg-accent-soft rounded-card p-6 sm:p-8 grid gap-6 md:grid-cols-12 md:items-center">
+      <div class="md:col-span-9 max-w-prose">
+        <h2 class="text-lj-20">Leja naast GRiDS</h2>
+        <p class="mt-2">
+          GRiDS is de hal met de inventaris: de gegevens van gebouwen en installaties in samenhang, voor de bouw.
+          Leja is de kennispartner die de hal kent en er onder regie in werkt. Samen: GRiDS levert de gegevens,
+          Leja onthoudt wat ermee gebeurt, laat AI erop werken en schrijft terug langs goedgekeurde routes.
+          Elk werkt ook op zichzelf.
+        </p>
+      </div>
+      <div class="md:col-span-3 md:text-right">
+        <a href="https://grids.bimforce.com" class="knop knop-stil">Naar grids.bimforce.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Oproep -->
+  <section id="contact" class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 scroll-mt-20">
+    <div class="max-w-prose">
+      <h2 class="text-lj-24 sm:text-lj-32">Een gesprek, of een demonstratie</h2>
+      <p class="mt-3">
+        Drie stappen: een inventaris van welke kennis en welke processen tellen, een eigen Leja met één eerste route,
+        en daarna uitbreiden per proces met een wekelijkse controleronde. We beginnen met een gesprek of een demonstratie,
+        en daarna een proef met één team en één proces.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3 items-center">
+        <a href="mailto:leja@bimforce.com?subject=Gesprek%20over%20Leja" class="knop knop-accent">Mail Martijn de Riet</a>
+        <span class="text-lj-14 text-ink-3">leja@bimforce.com · bimforce, Boxtel</span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

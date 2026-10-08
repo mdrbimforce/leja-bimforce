@@ -1,0 +1,54 @@
+@import '../brand/tokens.css';
+@import '../brand/fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color: var(--lj-ink);
+    background: var(--lj-ground);
+    font-family: var(--lj-font-sans);
+    font-size: var(--lj-text-site-body);
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  body {
+    min-height: 100dvh;
+    line-height: 1.55;
+  }
+  h1, h2, h3 { color: var(--lj-ink); text-wrap: balance; }
+  h1 { line-height: 1.08; font-weight: 700; letter-spacing: -0.01em; }
+  h2 { line-height: 1.15; font-weight: 700; }
+  h3 { line-height: 1.3; font-weight: 600; }
+  a {
+    color: var(--lj-accent);
+    text-underline-offset: 2px;
+  }
+  a:hover { color: var(--lj-accent-hover); }
+  :focus-visible {
+    outline: 2px solid var(--lj-accent);
+    outline-offset: 2px;
+  }
+  .op-brand :focus-visible { outline-color: var(--lj-spark); }
+  .cijfer { font-family: var(--lj-font-mono); font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  .knop {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: var(--lj-space-3) var(--lj-space-6);
+    border-radius: var(--lj-radius-control);
+    font-weight: 600; text-decoration: none;
+    transition: background-color var(--lj-motion-base, 160ms) var(--lj-motion-ease, ease);
+  }
+  .knop-accent { background: var(--lj-accent); color: var(--lj-on-accent); }
+  .knop-accent:hover { background: var(--lj-accent-hover); color: var(--lj-on-accent); }
+  .knop-stil { background: var(--lj-sunken); color: var(--lj-ink); }
+  .knop-stil:hover { background: var(--lj-line); color: var(--lj-ink); }
+  .op-brand .knop-stil { background: color-mix(in srgb, var(--lj-on-brand) 12%, transparent); color: var(--lj-on-brand); }
+  .op-brand .knop-stil:hover { background: color-mix(in srgb, var(--lj-on-brand) 20%, transparent); color: var(--lj-on-brand); }
+}
