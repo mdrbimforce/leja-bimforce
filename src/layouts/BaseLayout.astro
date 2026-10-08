@@ -21,7 +21,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 
 const nav = [
   { href: '/#muur', label: 'Waarom' },
-  { href: '/#pijlers', label: 'Hoe het werkt' },
+  { href: '/#pijlers', label: 'Pijlers' },
   { href: '/#cijfers', label: 'Cijfers' },
   { href: '/#contact', label: 'Contact' },
 ];
@@ -58,7 +58,7 @@ const nav = [
           <span class="block h-9 w-auto [&>svg]:h-9 [&>svg]:w-auto" set:html={logoOpDonker} />
         </a>
         <nav aria-label="Hoofdnavigatie">
-          <ul class="flex gap-4 sm:gap-6 text-lj-14 font-semibold">
+          <ul class="flex gap-4 sm:gap-6 text-lj-14 font-semibold whitespace-nowrap">
             {nav.map((n) => (
               <li><a href={n.href} class="text-on-brand-2 hover:text-on-brand no-underline transition-colors">{n.label}</a></li>
             ))}
