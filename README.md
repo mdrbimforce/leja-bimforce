@@ -32,3 +32,5 @@ Cloudflare Pages-project `leja-bimforce`, production branch `main`, build `npm r
 ## Inhoud
 
 Tekst en opbouw volgen leja-brain `documents/marketing/2026-09-30-leja-positionering-voorstel.md`: de muur in één beeld, de draagzin "Huur het model, bezit de kennis", de drie pijlers (Geheugen, Regie, Eigendom), de bewijscijfers, één alinea die GRiDS plaatst, en een oproep tot een gesprek. Geen klantnamen, mailadressen of projectnummers van derden.
+
+Let op bij een nieuw Pages-project: de GitHub-app Cloudflare Pages heeft op het account mdrbimforce toegang tot een vaste lijst repo's. Een nieuwe repo daar toevoegen (github.com/settings/installations, Cloudflare Pages, Configure), anders meldt Pages `disconnected from your Git account` en bouwt een push niet (gezien op 9 oktober 2026).
