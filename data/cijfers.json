@@ -1,14 +1,14 @@
 {
   "$comment": "Kerncijfers uit de Leja-graph van bimforce (decision-1790801598578-9). Alleen aantallen, nooit inhoud. Geschreven door tools/site/cijfers.mjs in leja-brain (dagelijkse timer op Hermes).",
-  "stand": "2026-10-16",
+  "stand": "2026-10-17",
   "in_gebruik_sinds": "2026-02",
-  "sessies": 546,
-  "geheugenfragmenten": 10735,
-  "beslissingen": 196,
-  "inzichten": 266,
+  "sessies": 549,
+  "geheugenfragmenten": 10811,
+  "beslissingen": 197,
+  "inzichten": 267,
   "fouten": 87,
-  "kennisartikelen": 188,
+  "kennisartikelen": 189,
   "protocollen": 25,
   "routes": 8,
-  "laatste_vrijdagronde": "2026-10-09"
+  "laatste_vrijdagronde": "2026-10-16"
 }
