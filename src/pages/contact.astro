@@ -1,0 +1,44 @@
+---
+// /contact: gesprek of demonstratie aanvragen. Bewust zonder formulier: één mailadres.
+// De drie stappen komen uit de oproep op de homepagina (positioneringsvoorstel §7).
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const stappen = [
+  { kop: 'Inventaris', tekst: 'Welke kennis en welke processen tellen in jouw organisatie.' },
+  { kop: 'Een eigen Leja met één eerste route', tekst: 'Een installatie voor één team, met één proces als route.' },
+  { kop: 'Uitbreiden per proces', tekst: 'Proces voor proces erbij, met een wekelijkse controleronde.' },
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description="Een gesprek of een demonstratie van Leja aanvragen: mail leja@bimforce.com."
+>
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pt-12 sm:pt-16 pb-8 grid gap-10 md:grid-cols-12">
+    <div class="md:col-span-6">
+      <p class="text-lj-14 font-semibold uppercase tracking-wide text-ink-3">Contact</p>
+      <h1 class="mt-3 text-lj-32 sm:text-[2.75rem]">Een gesprek, of een demonstratie.</h1>
+      <p class="mt-5 text-lj-20 text-ink-2 max-w-prose">
+        We beginnen met een gesprek of een demonstratie van onze eigen Leja. Daarna volgt een proef met één team en één proces.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3 items-center">
+        <a href="mailto:leja@bimforce.com?subject=Gesprek%20over%20Leja" class="knop knop-accent">Mail leja@bimforce.com</a>
+      </div>
+      <p class="mt-4 text-lj-14 text-ink-3">Gelezen door Leja, beantwoord door Martijn de Riet. bimforce, Boxtel.</p>
+    </div>
+    <div class="md:col-span-6">
+      <h2 class="text-lj-24">Drie stappen</h2>
+      <ol class="mt-4 space-y-3">
+        {stappen.map((s, i) => (
+          <li class="flex gap-4 rounded-card border border-line bg-surface p-4">
+            <span class="cijfer flex h-8 w-8 shrink-0 items-center justify-center rounded-pill bg-accent text-on-accent font-semibold">{i + 1}</span>
+            <div>
+              <p class="font-semibold text-ink">{s.kop}</p>
+              <p class="text-ink-2">{s.tekst}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</BaseLayout>

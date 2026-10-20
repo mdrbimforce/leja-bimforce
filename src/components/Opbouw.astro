@@ -1,0 +1,191 @@
+---
+// De opbouw van Leja op hoofdlijnen, voor /voor-techneuten. Vijf blokken: de knowledge graph als
+// enige bron; het dashboard met een proxy; één gateway naar modellen; agents en koppelingen via MCP;
+// routes met drie niveaus. Daaromheen tests en een tussenomgeving, en buiten de installatie de grote
+// modellen en de sites. Bewust zonder schema, poorten, hostnames of versienummers.
+// Kleuren zijn rollen uit het stijlpakket (zoals Muur.astro), zodat het beeld licht en donker volgt.
+// Twee tekeningen: breed vanaf md (960 px), smal en staand daaronder.
+---
+
+<figure class="m-0">
+  <!-- breed -->
+  <svg viewBox="0 0 780 470" role="img" aria-labelledby="opbouw-breed-titel opbouw-breed-omschrijving" class="opbouw hidden md:block w-full h-auto">
+    <title id="opbouw-breed-titel">De opbouw van Leja</title>
+    <desc id="opbouw-breed-omschrijving">In het midden van de eigen installatie staat de knowledge graph op Neo4j, de enige bron. Daaraan verbonden: het dashboard met een proxy in Node, die elke actie langs rechten en spoor leidt; agents en koppelingen via MCP, zoals Claude Code, Claude Desktop en OpenCode; routes met drie niveaus, automatisch, na goedkeuring en nooit; en één gateway naar modellen, met een lokaal model op eigen hardware. Via die gateway, de poort, gaan aanroepen naar grote modellen buiten de installatie. Daaromheen tests in Playwright, een tussenomgeving en uitrol vanaf een geteste versie. Los daarvan de sites, op Astro en Cloudflare Pages.</desc>
+
+    <!-- de installatie -->
+    <rect x="16" y="16" width="624" height="436" rx="12" fill="none" stroke="var(--lj-line-strong)" stroke-width="1.5" stroke-dasharray="6 5" />
+    <text x="32" y="40" class="t-label">Eigen installatie</text>
+    <text x="32" y="438" class="t-klein t-zacht">Daaromheen: tests in Playwright, een tussenomgeving, uitrol vanaf een geteste versie</text>
+
+    <!-- verbindingen met de graph -->
+    <g stroke="var(--lj-ink-2)" stroke-width="2">
+      <line x1="321" y1="120" x2="321" y2="150" />
+      <line x1="222" y1="225" x2="246" y2="225" />
+      <line x1="420" y1="225" x2="396" y2="225" />
+      <line x1="321" y1="326" x2="321" y2="300" />
+    </g>
+
+    <!-- dashboard en proxy -->
+    <rect x="196" y="34" width="250" height="86" rx="8" class="blok" />
+    <text x="321" y="62" text-anchor="middle" class="t-kop">Dashboard</text>
+    <text x="321" y="82" text-anchor="middle" class="t-tekst">met een proxy (Node) die elke actie</text>
+    <text x="321" y="99" text-anchor="middle" class="t-tekst">langs rechten en spoor leidt</text>
+
+    <!-- de knowledge graph -->
+    <rect x="246" y="150" width="150" height="150" rx="10" fill="var(--lj-accent-soft)" stroke="var(--lj-accent)" stroke-width="2" />
+    <g stroke="var(--lj-ink-2)" stroke-width="1.5" aria-hidden="true">
+      <line x1="290" y1="192" x2="318" y2="174" />
+      <line x1="318" y1="174" x2="350" y2="188" />
+      <line x1="290" y1="192" x2="322" y2="202" />
+      <line x1="350" y1="188" x2="322" y2="202" />
+      <line x1="322" y1="202" x2="336" y2="226" />
+      <line x1="290" y1="192" x2="300" y2="228" />
+      <line x1="300" y1="228" x2="336" y2="226" />
+    </g>
+    <circle cx="290" cy="192" r="7" fill="var(--lj-accent)" />
+    <circle cx="318" cy="174" r="6" fill="var(--lj-accent)" />
+    <circle cx="350" cy="188" r="6" fill="var(--lj-accent)" />
+    <circle cx="336" cy="226" r="7" fill="var(--lj-accent)" />
+    <circle cx="300" cy="228" r="5" fill="var(--lj-accent)" />
+    <circle cx="322" cy="202" r="6" fill="var(--lj-spark)" />
+    <text x="321" y="264" text-anchor="middle" class="t-kop">Knowledge graph</text>
+    <text x="321" y="282" text-anchor="middle" class="t-tekst">Neo4j, de enige bron</text>
+
+    <!-- agents en koppelingen -->
+    <rect x="36" y="165" width="186" height="120" rx="8" class="blok" />
+    <text x="129" y="191" text-anchor="middle" class="t-kop">Agents en koppelingen</text>
+    <text x="129" y="209" text-anchor="middle" class="t-tekst">via MCP</text>
+    <text x="129" y="233" text-anchor="middle" class="t-klein">Claude Code, Claude Desktop,</text>
+    <text x="129" y="249" text-anchor="middle" class="t-klein">OpenCode en andere clients</text>
+    <text x="129" y="265" text-anchor="middle" class="t-klein">op hetzelfde geheugen</text>
+
+    <!-- de gateway -->
+    <rect x="420" y="165" width="186" height="120" rx="8" fill="var(--lj-sunken)" stroke="var(--lj-ink)" stroke-width="1.5" />
+    <text x="513" y="191" text-anchor="middle" class="t-kop t-kop-smal">Eén gateway naar modellen</text>
+    <text x="513" y="215" text-anchor="middle" class="t-klein">lokaal model op eigen hardware</text>
+    <text x="513" y="233" text-anchor="middle" class="t-klein">voor wat binnen moet blijven;</text>
+    <text x="513" y="251" text-anchor="middle" class="t-klein">grote modellen via API,</text>
+    <text x="513" y="267" text-anchor="middle" class="t-klein">waar het beleid dat toestaat</text>
+
+    <!-- routes -->
+    <rect x="176" y="326" width="290" height="88" rx="8" class="blok" />
+    <text x="321" y="350" text-anchor="middle" class="t-kop">Routes</text>
+    <text x="321" y="368" text-anchor="middle" class="t-tekst">modulaire verwerkingsstappen</text>
+    <rect x="190" y="380" width="86" height="22" rx="11" fill="var(--lj-ok-soft)" />
+    <text x="233" y="395" text-anchor="middle" class="t-pil" fill="var(--lj-ok)">automatisch</text>
+    <rect x="284" y="380" width="106" height="22" rx="11" fill="var(--lj-spark-soft)" />
+    <text x="337" y="395" text-anchor="middle" class="t-pil" fill="var(--lj-warn)">na goedkeuring</text>
+    <rect x="398" y="380" width="54" height="22" rx="11" fill="var(--lj-never)" />
+    <text x="425" y="395" text-anchor="middle" class="t-pil" fill="var(--lj-on-never)">nooit</text>
+
+    <!-- de poort naar buiten -->
+    <line x1="606" y1="225" x2="660" y2="225" stroke="var(--lj-spark)" stroke-width="3" />
+    <text x="623" y="214" text-anchor="middle" class="t-klein t-zacht">poort</text>
+
+    <!-- buiten de installatie -->
+    <rect x="660" y="180" width="112" height="90" rx="8" fill="var(--lj-surface)" stroke="var(--lj-ink-3)" stroke-width="1.5" stroke-dasharray="4 4" />
+    <text x="716" y="213" text-anchor="middle" class="t-kop t-kop-smal">Grote modellen</text>
+    <text x="716" y="232" text-anchor="middle" class="t-klein">buiten, gehuurd,</text>
+    <text x="716" y="248" text-anchor="middle" class="t-klein">via API</text>
+
+    <rect x="660" y="330" width="112" height="84" rx="8" fill="var(--lj-surface)" stroke="var(--lj-ink-3)" stroke-width="1.5" stroke-dasharray="4 4" />
+    <text x="716" y="361" text-anchor="middle" class="t-kop t-kop-smal">Sites</text>
+    <text x="716" y="380" text-anchor="middle" class="t-klein">Astro op</text>
+    <text x="716" y="396" text-anchor="middle" class="t-klein">Cloudflare Pages</text>
+  </svg>
+
+  <!-- smal -->
+  <svg viewBox="0 0 360 716" role="img" aria-labelledby="opbouw-smal-titel opbouw-smal-omschrijving" class="opbouw md:hidden w-full max-w-md mx-auto h-auto">
+    <title id="opbouw-smal-titel">De opbouw van Leja</title>
+    <desc id="opbouw-smal-omschrijving">Bovenaan de eigen installatie staat de knowledge graph op Neo4j, de enige bron. Daaraan verbonden: het dashboard met een proxy in Node, die elke actie langs rechten en spoor leidt; agents en koppelingen via MCP, zoals Claude Code, Claude Desktop en OpenCode; routes met drie niveaus, automatisch, na goedkeuring en nooit; en één gateway naar modellen, met een lokaal model op eigen hardware. Via die gateway, de poort, gaan aanroepen naar grote modellen buiten de installatie. De installatie heeft tests in Playwright, een tussenomgeving en uitrol vanaf een geteste versie. Los daarvan de sites, op Astro en Cloudflare Pages.</desc>
+
+    <rect x="8" y="8" width="344" height="592" rx="12" fill="none" stroke="var(--lj-line-strong)" stroke-width="1.5" stroke-dasharray="6 5" />
+    <text x="22" y="30" class="t-label">Eigen installatie</text>
+    <text x="22" y="48" class="t-klein t-zacht">met tests, een tussenomgeving en uitrol vanaf een versie</text>
+
+    <!-- de graph -->
+    <rect x="24" y="62" width="312" height="110" rx="10" fill="var(--lj-accent-soft)" stroke="var(--lj-accent)" stroke-width="2" />
+    <g stroke="var(--lj-ink-2)" stroke-width="1.5" aria-hidden="true">
+      <line x1="52" y1="104" x2="80" y2="84" />
+      <line x1="80" y1="84" x2="112" y2="98" />
+      <line x1="52" y1="104" x2="84" y2="114" />
+      <line x1="112" y1="98" x2="84" y2="114" />
+      <line x1="84" y1="114" x2="100" y2="142" />
+      <line x1="52" y1="104" x2="62" y2="142" />
+      <line x1="62" y1="142" x2="100" y2="142" />
+    </g>
+    <circle cx="52" cy="104" r="7" fill="var(--lj-accent)" />
+    <circle cx="80" cy="84" r="6" fill="var(--lj-accent)" />
+    <circle cx="112" cy="98" r="6" fill="var(--lj-accent)" />
+    <circle cx="100" cy="142" r="7" fill="var(--lj-accent)" />
+    <circle cx="62" cy="142" r="5" fill="var(--lj-accent)" />
+    <circle cx="84" cy="114" r="6" fill="var(--lj-spark)" />
+    <text x="144" y="112" class="t-kop t-groot">Knowledge graph</text>
+    <text x="144" y="134" class="t-tekst t-tekst-groot">Neo4j, de enige bron</text>
+
+    <!-- ruggengraat naar de vier blokken -->
+    <g stroke="var(--lj-ink-2)" stroke-width="2">
+      <line x1="40" y1="172" x2="40" y2="537" />
+      <line x1="40" y1="230" x2="56" y2="230" />
+      <line x1="40" y1="330" x2="56" y2="330" />
+      <line x1="40" y1="435" x2="56" y2="435" />
+      <line x1="40" y1="537" x2="56" y2="537" />
+    </g>
+
+    <rect x="56" y="192" width="280" height="76" rx="8" class="blok" />
+    <text x="72" y="216" class="t-kop t-groot">Dashboard</text>
+    <text x="72" y="237" class="t-tekst t-tekst-groot">proxy (Node): elke actie langs</text>
+    <text x="72" y="255" class="t-tekst t-tekst-groot">rechten en spoor</text>
+
+    <rect x="56" y="284" width="280" height="92" rx="8" class="blok" />
+    <text x="72" y="308" class="t-kop t-groot">Agents en koppelingen via MCP</text>
+    <text x="72" y="329" class="t-tekst t-tekst-groot">Claude Code, Claude Desktop,</text>
+    <text x="72" y="347" class="t-tekst t-tekst-groot">OpenCode en andere clients,</text>
+    <text x="72" y="365" class="t-tekst t-tekst-groot">op hetzelfde geheugen</text>
+
+    <rect x="56" y="392" width="280" height="86" rx="8" class="blok" />
+    <text x="72" y="416" class="t-kop t-groot">Routes</text>
+    <text x="72" y="436" class="t-tekst t-tekst-groot">modulaire verwerkingsstappen</text>
+    <rect x="72" y="447" width="86" height="22" rx="11" fill="var(--lj-ok-soft)" />
+    <text x="115" y="462" text-anchor="middle" class="t-pil" fill="var(--lj-ok)">automatisch</text>
+    <rect x="166" y="447" width="106" height="22" rx="11" fill="var(--lj-spark-soft)" />
+    <text x="219" y="462" text-anchor="middle" class="t-pil" fill="var(--lj-warn)">na goedkeuring</text>
+    <rect x="280" y="447" width="54" height="22" rx="11" fill="var(--lj-never)" />
+    <text x="307" y="462" text-anchor="middle" class="t-pil" fill="var(--lj-on-never)">nooit</text>
+
+    <rect x="56" y="494" width="280" height="86" rx="8" fill="var(--lj-sunken)" stroke="var(--lj-ink)" stroke-width="1.5" />
+    <text x="72" y="518" class="t-kop t-groot">Eén gateway naar modellen</text>
+    <text x="72" y="539" class="t-tekst t-tekst-groot">lokaal model op eigen hardware;</text>
+    <text x="72" y="557" class="t-tekst t-tekst-groot">grote modellen via API, volgens beleid</text>
+
+    <!-- de poort naar buiten -->
+    <line x1="131" y1="580" x2="131" y2="630" stroke="var(--lj-spark)" stroke-width="3" />
+    <text x="140" y="620" class="t-klein t-zacht">poort</text>
+
+    <rect x="56" y="630" width="150" height="70" rx="8" fill="var(--lj-surface)" stroke="var(--lj-ink-3)" stroke-width="1.5" stroke-dasharray="4 4" />
+    <text x="131" y="658" text-anchor="middle" class="t-kop">Grote modellen</text>
+    <text x="131" y="678" text-anchor="middle" class="t-klein">buiten, gehuurd, via API</text>
+
+    <rect x="222" y="630" width="114" height="70" rx="8" fill="var(--lj-surface)" stroke="var(--lj-ink-3)" stroke-width="1.5" stroke-dasharray="4 4" />
+    <text x="279" y="656" text-anchor="middle" class="t-kop">Sites</text>
+    <text x="279" y="674" text-anchor="middle" class="t-klein">Astro op</text>
+    <text x="279" y="690" text-anchor="middle" class="t-klein">Cloudflare Pages</text>
+  </svg>
+  <figcaption class="mt-3 text-lj-14 text-ink-3">
+    De opbouw op hoofdlijnen. Alles binnen de stippellijn hoort bij de eigen installatie van een organisatie.
+  </figcaption>
+</figure>
+
+<style>
+  .opbouw .blok { fill: var(--lj-surface); stroke: var(--lj-ink); stroke-width: 1.5; }
+  .opbouw .t-kop { fill: var(--lj-ink); font-size: 14px; font-weight: 700; }
+  .opbouw .t-kop-smal { font-size: 13px; }
+  .opbouw .t-groot { font-size: 15px; }
+  .opbouw .t-tekst { fill: var(--lj-ink-2); font-size: 12px; }
+  .opbouw .t-tekst-groot { font-size: 13px; }
+  .opbouw .t-klein { fill: var(--lj-ink-2); font-size: 11.5px; }
+  .opbouw .t-zacht { fill: var(--lj-ink-3); }
+  .opbouw .t-label { fill: var(--lj-ink-3); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .opbouw .t-pil { font-size: 11.5px; font-weight: 600; }
+</style>

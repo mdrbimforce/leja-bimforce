@@ -1,0 +1,100 @@
+---
+// /voor-techneuten: Leja voor techneuten (besluit Martijn, 20 oktober 2026: het verhaal per lezer).
+// De opbouw op hoofdlijnen. Bewust weggelaten: namen en inhoud van protocollen, labels en
+// relatietypes van het schema, de werking van de kluis en de hash-keten, prompt-teksten,
+// hostnames, poorten en versienummers. De diepte staat op knowledge.bimforce.com.
+import LezerLayout from '../layouts/LezerLayout.astro';
+import Sectie from '../components/Sectie.astro';
+import Opbouw from '../components/Opbouw.astro';
+import Niveaus from '../components/Niveaus.astro';
+
+const principes = [
+  { kop: 'Eén bron van waarheid.', tekst: 'De graph; elk ander onderdeel leest en schrijft daar.' },
+  { kop: 'Alles herleidbaar tot een sessie.', tekst: 'Kennis, beslissingen en wijzigingen hangen aan het werk waarin ze ontstonden.' },
+  { kop: 'De mens beslist waar dat hoort.', tekst: 'Een route die een mens nodig heeft, wacht op een mens.' },
+  { kop: 'Het model is vervangbaar.', tekst: 'Wisselt het model, dan blijft het geheugen staan.' },
+  { kop: 'Open-source-onderbouw.', tekst: 'Neo4j Community, Node en Astro.' },
+  { kop: 'Kern en modules gescheiden.', tekst: 'Modules, zoals een koppeling met GRiDS of Revit, staan los van de kern.' },
+];
+---
+
+<LezerLayout
+  lezer="techneuten"
+  title="Voor techneuten"
+  description="Leja voor techneuten: de opbouw op hoofdlijnen. Eén knowledge graph als bron, een dashboard met proxy, één gateway naar modellen, agents via MCP en routes met drie niveaus."
+  eyebrow="Leja voor techneuten"
+  kop="Eén graph als bron, elk model en elke client erop."
+  lead={[
+    'Hieronder de opbouw van Leja op hoofdlijnen: vijf onderdelen en de principes erachter.',
+    'De diepte over afzonderlijke onderwerpen staat in de kennisartikelen op knowledge.bimforce.com.',
+  ]}
+  film={{ id: 'techneuten-rondleiding', bijschrift: 'Rondleiding door het dashboard: werk, geheugen, routes, beheer' }}
+>
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pb-6">
+    <div class="bg-surface rounded-card shadow-1 border border-line p-4 sm:p-6">
+      <Opbouw />
+    </div>
+  </section>
+
+  <Sectie kop="De knowledge graph" id="graph">
+    <p>
+      Alles wat Leja weet, staat in één knowledge graph op Neo4j: kennis, beslissingen, sessies, taken, routes en het
+      spoor van wat er veranderde. Elk ander onderdeel leest en schrijft daar.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Dashboard en proxy" id="dashboard">
+    <p>
+      Het dashboard is het scherm voor mensen. Elke actie loopt via een proxy in Node, die de actie langs de rechten
+      en het spoor leidt.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Eén gateway naar modellen" id="gateway">
+    <p>
+      Modellen worden aangeroepen via één gateway. Een lokaal model op eigen hardware doet het werk dat binnen moet
+      blijven; grote modellen gaan via een API, waar het beleid dat toestaat.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Agents en koppelingen via MCP" id="mcp">
+    <p>
+      Agents praten met het geheugen via MCP. Claude Code, Claude Desktop, OpenCode en andere clients werken zo op
+      dezelfde graph, en wat in de ene client is vastgelegd, is in de andere terug te vinden.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Routes" id="routes">
+    <p>
+      Een route is een modulaire verwerkingsstap: iets komt binnen, wordt ingedeeld, levert een voorstel op en wordt
+      uitgevoerd. Elke route heeft een van drie niveaus:
+    </p>
+    <Niveaus />
+  </Sectie>
+
+  <Sectie kop="Daaromheen" id="daaromheen">
+    <p>
+      Tests in Playwright lopen over het dashboard. Een tussenomgeving volgt productie, en een uitrol gaat vanaf een
+      geteste versie. De sites, deze ook, draaien op Astro en Cloudflare Pages.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Principes" id="principes">
+    <ul class="space-y-3">
+      {principes.map((p) => (
+        <li class="flex gap-3">
+          <span aria-hidden="true" class="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-pill bg-accent"></span>
+          <span><strong class="text-ink">{p.kop}</strong> <span class="text-ink-2">{p.tekst}</span></span>
+        </li>
+      ))}
+    </ul>
+  </Sectie>
+
+  <Sectie kop="Verder lezen" id="verder-lezen">
+    <p>
+      De kennisartikelen, onder meer over Leja en over routes, staan op
+      <a href="https://knowledge.bimforce.com">knowledge.bimforce.com</a>. Eén bron per onderwerp: deze site verwijst
+      ernaar.
+    </p>
+  </Sectie>
+</LezerLayout>

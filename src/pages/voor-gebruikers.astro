@@ -1,0 +1,64 @@
+---
+// /voor-gebruikers: Leja voor gebruikers (besluit Martijn, 20 oktober 2026: het verhaal per lezer).
+import LezerLayout from '../layouts/LezerLayout.astro';
+import Sectie from '../components/Sectie.astro';
+---
+
+<LezerLayout
+  lezer="gebruikers"
+  title="Voor gebruikers"
+  description="Leja voor gebruikers: verder waar je gebleven was, workflows die vastliggen, de context van het bedrijf, en een chat die je taak kent."
+  eyebrow="Leja voor gebruikers"
+  kop="Niet elke keer opnieuw beginnen."
+  lead={[
+    'Leja onthoudt de stand van je werk, de afspraken van het bedrijf en wat eerder al is uitgezocht.',
+    'Elke sessie begint met die kennis erbij, met welk model je ook werkt.',
+  ]}
+  film={{ id: 'gebruikers-verder', bijschrift: 'Verder waar we gebleven waren: een sessie haalt de stand op en werkt door' }}
+>
+  <Sectie kop="Verder waar je gebleven was" id="verder" lijn={false}>
+    <p>
+      Een sessie begint met de stand van de vorige keer: wat er besloten is, wat er nog openstaat en waar je mee bezig
+      was. Uitleggen wat je gisteren deed, hoeft dus niet meer.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Workflows die blijven" id="workflows">
+    <p>
+      Een workflow die eenmaal is ontwikkeld, wordt hergebruikt. Routes, skills en werkafspraken (protocollen) liggen
+      vast en zijn voor iedereen hetzelfde.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Leja kent het bedrijf" id="context">
+    <p>
+      Leja leert de context van het bedrijf: de processen, de do's en don'ts, de vakkennis. Een fout wordt vastgelegd
+      met een preventieregel, zodat dezelfde fout niet terugkomt.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Wat een model oplevert, blijft" id="blijft">
+    <p>
+      Wat een model oplevert, wordt opgeslagen als kennis, als beslissing of als fragment, en komt terug op het moment dat
+      het nodig is. Het werk gaat daardoor sneller.
+    </p>
+    <p>
+      Het is ook goedkoper in AI-kosten: een lokaal model doet het dagelijkse werk, een groot model komt erbij waar het
+      loont. Dat kies je per taak.
+    </p>
+  </Sectie>
+
+  <Sectie kop="De chat kent je taak" id="chat">
+    <p>
+      Een gesprek hangt aan een taak of een scherm, met de context daarvan erbij. <strong>Wacht op jou</strong> bundelt
+      alles wat een besluit van jou vraagt.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Kijk zelf maar" id="gegevens">
+    <p>
+      Bij elk scherm staat een knop <strong>Gegevens</strong>. Die laat de onderliggende data uit de graph zien, zodat je
+      kunt nagaan dat wat op het scherm staat ook in de gegevens staat.
+    </p>
+  </Sectie>
+</LezerLayout>

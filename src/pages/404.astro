@@ -1,0 +1,25 @@
+---
+// 404: Astro bouwt dist/404.html; Cloudflare Pages serveert die met status 404 op onbekende paden.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { lezers } from '../data/lezers';
+---
+
+<BaseLayout title="Pagina niet gevonden" noIndex>
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pt-16 sm:pt-24 pb-8">
+    <p class="text-lj-14 font-semibold uppercase tracking-wide text-ink-3">404</p>
+    <h1 class="mt-3 text-lj-32 sm:text-[2.75rem]">Deze pagina bestaat niet.</h1>
+    <p class="mt-5 text-lj-20 text-ink-2 max-w-prose">
+      Misschien is het adres veranderd. Begin op de homepagina, of kies een van de pagina's hieronder.
+    </p>
+    <div class="mt-8">
+      <a href="/" class="knop knop-accent">Naar de homepagina</a>
+    </div>
+    <ul class="mt-10 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
+      {lezers.map((l) => (
+        <li>
+          <a href={l.href} class="block rounded-card border border-line bg-surface p-4 font-semibold no-underline hover:border-accent">{l.label}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

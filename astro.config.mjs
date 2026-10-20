@@ -8,5 +8,6 @@ import sitemap from '@astrojs/sitemap';
 // met `node brand/scripts/sync-to-site.mjs <pad naar deze repo>`.
 export default defineConfig({
   site: 'https://leja.bimforce.com',
-  integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
+  // /og/ is de bron van het deelbeeld (noindex) en hoort niet in de sitemap.
+  integrations: [tailwind({ applyBaseStyles: false }), sitemap({ filter: (page) => !page.endsWith('/og/') })],
 });

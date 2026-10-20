@@ -1,0 +1,43 @@
+---
+// Plek voor een film op een pagina. Staat public/film/<id>.mp4 er tijdens de build, dan komt er een
+// video (met public/film/<id>.png als poster, als die bestaat); anders een kaart "Film volgt" in de
+// huisstijl, zodat de pagina nu al klopt. Een film plaatsen = het mp4-bestand (en een png) in
+// public/film zetten en opnieuw bouwen.
+import fs from 'node:fs';
+import path from 'node:path';
+import play from '../brand/icons/play.svg?raw';
+
+export interface Props {
+  id: string;
+  bijschrift: string;
+  poster?: string;
+}
+
+const { id, bijschrift, poster } = Astro.props;
+const filmMap = path.join(process.cwd(), 'public', 'film');
+const heeftFilm = fs.existsSync(path.join(filmMap, `${id}.mp4`));
+const posterSrc = poster ?? (fs.existsSync(path.join(filmMap, `${id}.png`)) ? `/film/${id}.png` : undefined);
+---
+
+<section class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-12">
+  <figure id={`film-${id}`} class="m-0 max-w-4xl">
+    {heeftFilm ? (
+      <video
+        controls
+        preload="none"
+        playsinline
+        poster={posterSrc}
+        class="w-full aspect-video rounded-card border border-line bg-sunken"
+      >
+        <source src={`/film/${id}.mp4`} type="video/mp4" />
+      </video>
+    ) : (
+      <div class="w-full aspect-video rounded-card border border-line bg-sunken flex flex-col items-center justify-center gap-3 p-6 text-center">
+        <span aria-hidden="true" class="flex h-12 w-12 items-center justify-center rounded-pill bg-surface text-ink-3 [&>svg]:h-6 [&>svg]:w-6" set:html={play} />
+        <p class="text-lj-20 font-semibold text-ink">Film volgt</p>
+        <p class="text-lj-14 text-ink-3 max-w-prose">{bijschrift}</p>
+      </div>
+    )}
+    <figcaption class="mt-3 text-lj-14 text-ink-3">{bijschrift}</figcaption>
+  </figure>
+</section>
