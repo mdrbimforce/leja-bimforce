@@ -1,0 +1,127 @@
+---
+// /voor-it: Leja voor IT (besluit Martijn, 20 oktober 2026: het verhaal per lezer).
+// Alleen wat vandaag in Leja werkt; wat in voorbereiding is, staat er met zoveel woorden bij.
+import LezerLayout from '../layouts/LezerLayout.astro';
+import Sectie from '../components/Sectie.astro';
+
+const vragen = [
+  {
+    vraag: 'Waar staat de data?',
+    antwoord:
+      'In de eigen installatie van de organisatie: op een eigen server, on-premise, of op een server die bimforce beheert. Elke organisatie heeft een eigen graph.',
+  },
+  {
+    vraag: 'Wie kan erbij?',
+    antwoord:
+      'Wie een rol en een recht heeft, en dan binnen het domein van dat recht. Alle rechten komen uit één bron, en een wijziging van rechten vraagt vier ogen.',
+  },
+  {
+    vraag: 'Wat gaat er naar buiten, en wat niet?',
+    antwoord:
+      'Naar buiten gaat alleen wat via de gateway loopt, naar een model dat het beleid voor die bron toestaat. Wat binnen moet blijven, gaat naar het lokale model.',
+  },
+  {
+    vraag: 'Hoe zie ik dat achteraf?',
+    antwoord:
+      'Per aanroep in het register Naar buiten en in het inhoudsregister, en per wijziging in het spoor.',
+  },
+  {
+    vraag: 'Wat als we stoppen?',
+    antwoord:
+      'De gegevens staan in je eigen installatie en het spoor is in zijn geheel te exporteren. Wie volledig eigendom wil, kan Leja kopen: dan hoort de broncode erbij.',
+  },
+];
+---
+
+<LezerLayout
+  lezer="it"
+  title="Voor IT"
+  description="Leja voor IT: één poort naar buiten, modelbeleid per functie en rol, rechten uit één bron, een spoor van elke wijziging, en een eigen installatie per organisatie."
+  eyebrow="Leja voor IT"
+  kop="Zekerheid over wat er in een model gaat, door wie, wanneer, en wat ermee mag."
+  lead={[
+    'In Leja ligt vast welke gegevens naar welk model gaan, wie dat in gang zette en wat er daarna mee mag. Achteraf is elke stap na te gaan.',
+    'Alles op deze pagina werkt vandaag. Waar iets nog in voorbereiding is, staat dat erbij.',
+  ]}
+  film={{ id: 'it-spoor', bijschrift: 'Een route van begin tot eind: voorstel, goedkeuring door een mens, uitvoering, spoor' }}
+>
+  <Sectie kop="Eén poort naar buiten" id="poort" lijn={false}>
+    <p>
+      Alle aanroepen van externe modellen lopen via één gateway. Het register <strong>Naar buiten</strong> legt per
+      aanroep vast wie hem deed, welk model antwoordde, waarom de aanroep nodig was en hoeveel er werd verstuurd.
+    </p>
+    <p>
+      Daarnaast bewaart een inhoudsregister per aanroep de herkomst van de verstuurde inhoud: uit welke bron die kwam.
+      Dat register is versleuteld en heeft een bewaartermijn.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Modelbeleid" id="modelbeleid">
+    <p>
+      Welk model voor welk werk mag, staat in een whitelist: per type model, per functie (chat, code, delegatie,
+      zelfstandige routes) en per rol. Een lokaal model op eigen hardware doet het werk dat binnen moet blijven.
+      Grote modellen komen alleen in beeld waar het beleid dat toestaat.
+    </p>
+    <p>
+      Datasoevereiniteit is per modelleverancier vastgelegd: welk model bij welke bron mag. Inhoud uit een gevoelige
+      bron gaat zo alleen naar een model dat daarvoor is aangewezen.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Rollen en rechten" id="rechten">
+    <p>
+      Elke schrijfactie in het dashboard vraagt een recht, en alle rechten komen uit één rechtenbron: de kluis. Rollen
+      worden per persoon toegekend. Rechten gelden per domein, zodat een afdeling of project alleen zijn eigen deel ziet.
+    </p>
+    <p>
+      Een wijziging van rechten gaat als route met vier ogen: de een vraagt de wijziging aan, een ander keurt hem goed.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Het spoor" id="spoor">
+    <p>
+      Elke wijziging is een vastgelegde gebeurtenis: wie, wat, wanneer, waarop. De gebeurtenissen zijn aaneengeschakeld
+      met een hash-keten, en die keten wordt dagelijks verankerd buiten de database. Zo is achteraf te controleren dat
+      er niets tussenuit is gehaald of veranderd.
+    </p>
+    <p>
+      Verwijderen is een soft-delete: wat verwijderd is, is te herstellen. Het hele spoor is te exporteren.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Een eigen installatie" id="installatie">
+    <p>
+      Elke organisatie krijgt een eigen installatie, met een eigen graph en een eigen dashboard. Die draait op een eigen
+      server of op een server die bimforce beheert; on-premise kan ook.
+    </p>
+    <p>
+      Er loopt geen pad van internet naar de graph. Elke dag gaat er een versleutelde back-up. Een tussenomgeving volgt
+      productie, en een uitrol gebeurt vanaf een geteste versie.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Inloggen" id="inloggen">
+    <p>
+      Medewerkers loggen in via de identiteitsaanbieder van de organisatie. Inloggen met Google werkt. Inloggen met
+      Microsoft Entra (OIDC) is voorbereid en wacht op de registratie bij de eerste organisatie die het gebruikt.
+    </p>
+  </Sectie>
+
+  <Sectie kop="AVG" id="avg">
+    <p>
+      Voor elke gegevenssoort bestaan een bewaartermijn en een verwijderroute. Een verwerkersovereenkomst is in
+      voorbereiding.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Vragen die IT stelt" id="vragen">
+    <dl class="space-y-3">
+      {vragen.map((v) => (
+        <div class="rounded-card border border-line bg-surface p-5">
+          <dt class="font-semibold text-ink">{v.vraag}</dt>
+          <dd class="mt-1 text-ink-2">{v.antwoord}</dd>
+        </div>
+      ))}
+    </dl>
+  </Sectie>
+</LezerLayout>

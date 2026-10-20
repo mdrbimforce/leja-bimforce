@@ -1,0 +1,55 @@
+---
+// Vaste opbouw van een lezerspagina (besluit Martijn, 20 oktober 2026): een kop met eyebrow
+// "Leja voor ...", een h1 met de kernbelofte en een lead van twee zinnen; daarna de secties
+// (default slot, met Sectie.astro), het film-slot, de oproep en de andere drie lezers.
+import BaseLayout from './BaseLayout.astro';
+import Film from '../components/Film.astro';
+import Lezers from '../components/Lezers.astro';
+import type { LezerId } from '../data/lezers';
+
+export interface Props {
+  lezer: LezerId;
+  title: string;
+  description: string;
+  eyebrow: string;
+  kop: string;
+  lead: string[];
+  film: { id: string; bijschrift: string; poster?: string };
+}
+
+const { lezer, title, description, eyebrow, kop, lead, film } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <header class="mx-auto max-w-6xl px-4 sm:px-6 pt-12 sm:pt-16 pb-8 sm:pb-10">
+    <p class="text-lj-14 font-semibold uppercase tracking-wide text-ink-3">{eyebrow}</p>
+    <h1 class="mt-3 text-lj-32 sm:text-[2.75rem] max-w-4xl">{kop}</h1>
+    <div class="mt-5 space-y-2 max-w-prose text-lj-20 text-ink-2">
+      {lead.map((zin) => <p>{zin}</p>)}
+    </div>
+    <slot name="kop" />
+  </header>
+
+  <slot />
+
+  <Film id={film.id} bijschrift={film.bijschrift} poster={film.poster} />
+
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-12">
+    <div class="bg-accent-soft rounded-card p-6 sm:p-8 grid gap-6 md:grid-cols-12 md:items-center">
+      <div class="md:col-span-8 max-w-prose">
+        <h2 class="text-lj-24">Een gesprek, of een demonstratie</h2>
+        <p class="mt-2">
+          We laten onze eigen Leja zien en kijken samen welk proces zich leent voor een eerste route.
+          Daarna volgt een proef met één team en één proces.
+        </p>
+      </div>
+      <div class="md:col-span-4 md:text-right">
+        <a href="/contact/" class="knop knop-accent">Plan een gesprek</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pt-4 pb-4">
+    <Lezers zonder={lezer} kop="Lees verder vanuit een andere rol" />
+  </section>
+</BaseLayout>

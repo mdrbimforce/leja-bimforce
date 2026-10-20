@@ -1,0 +1,52 @@
+---
+// /over: waar Leja vandaan komt, de naam, de relatie met GRiDS, en dat bimforce Leja zelf gebruikt.
+// Bron: leja-brain documents/marketing/2026-09-30-leja-positionering-voorstel.md §4b, §9 en §13.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sectie from '../components/Sectie.astro';
+import cijfers from '../../data/cijfers.json';
+
+const getal = new Intl.NumberFormat('nl-NL');
+---
+
+<BaseLayout
+  title="Over"
+  description="Over Leja: gemaakt door bimforce in Boxtel, sinds februari 2026 in gebruik als eigen kennispartner, nu ook als product. De naam, en de relatie met GRiDS."
+>
+  <header class="mx-auto max-w-6xl px-4 sm:px-6 pt-12 sm:pt-16 pb-8 sm:pb-10">
+    <p class="text-lj-14 font-semibold uppercase tracking-wide text-ink-3">Over Leja</p>
+    <h1 class="mt-3 text-lj-32 sm:text-[2.75rem] max-w-4xl">Eerst voor ons eigen werk, nu als product.</h1>
+  </header>
+
+  <Sectie kop="Waar Leja vandaan komt" id="herkomst" lijn={false}>
+    <p>
+      Leja is gemaakt door bimforce in Boxtel. bimforce bestaat sinds 2016. Sinds februari 2026 is Leja in gebruik als
+      onze eigen kennispartner: eerst voor ons eigen werk, nu ook als product voor andere organisaties.
+    </p>
+  </Sectie>
+
+  <Sectie kop="De naam" id="naam">
+    <p>
+      Leja is de naam van het product en van onze eigen kennispartner. Een organisatie die Leja in gebruik neemt, geeft
+      haar eigen installatie een eigen naam.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Leja en GRiDS" id="grids">
+    <p>
+      GRiDS is de hal met de inventaris: de gegevens van gebouwen en installaties in samenhang, voor de bouw.
+      Leja is de kennispartner die de hal kent en er onder regie in werkt. Samen: GRiDS levert de gegevens,
+      Leja onthoudt wat ermee gebeurt, laat AI erop werken en schrijft terug langs goedgekeurde routes.
+      Elk werkt ook op zichzelf.
+    </p>
+    <p><a href="https://grids.bimforce.com">Naar grids.bimforce.com</a></p>
+  </Sectie>
+
+  <Sectie kop="Elke dag in gebruik" id="gebruik">
+    <p>
+      bimforce werkt zelf elke dag met Leja. Onze eigen graph telt {getal.format(cijfers.sessies)} sessies,
+      {getal.format(cijfers.beslissingen)} beslissingen en {getal.format(cijfers.kennisartikelen)} kennisartikelen.
+      De <a href="/#cijfers">kerncijfers op de homepagina</a> worden dagelijks bijgewerkt; alleen de aantallen gaan naar
+      buiten, de inhoud blijft binnen.
+    </p>
+  </Sectie>
+</BaseLayout>

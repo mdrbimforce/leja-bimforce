@@ -1,6 +1,6 @@
 # leja-bimforce
 
-Bron van **leja.bimforce.com**, de productsite van Leja, de AI-kennispartner van bimforce. Eerste versie op 8 oktober 2026: alleen de homepagina (quest-143 step-03, quest-144 sessie 8). De overige pagina's (Geheugen, Regie, Eigendom, Het dashboard, Hoe het werkt, In de praktijk, Over, Contact) volgen in quest-143 step-04.
+Bron van **leja.bimforce.com**, de productsite van Leja, de AI-kennispartner van bimforce. Eerste versie op 8 oktober 2026: de homepagina (quest-143 step-03, quest-144 sessie 8). Sinds 20 oktober 2026 (besluit Martijn) wordt het verhaal per lezer verteld, niet per pijler: `/voor-it`, `/voor-managers`, `/voor-gebruikers`, `/voor-techneuten`, plus `/over`, `/contact` en een 404-pagina.
 
 Stack: Astro 5, Tailwind 3.4 met het Leja-stijlpakket, Cloudflare Pages. Zelfde patroon als grids.bimforce.com en knowledge.bimforce.com.
 
@@ -31,6 +31,10 @@ Cloudflare Pages-project `leja-bimforce`, production branch `main`, build `npm r
 
 ## Inhoud
 
-Tekst en opbouw volgen leja-brain `documents/marketing/2026-09-30-leja-positionering-voorstel.md`: de muur in één beeld, de draagzin "Huur het model, bezit de kennis", de drie pijlers (Geheugen, Regie, Eigendom), de bewijscijfers, één alinea die GRiDS plaatst, en een oproep tot een gesprek. Geen klantnamen, mailadressen of projectnummers van derden.
+Tekst en opbouw volgen leja-brain `documents/marketing/2026-09-30-leja-positionering-voorstel.md`: de muur in één beeld, de draagzin "Huur het model, bezit de kennis", de drie pijlers (Geheugen, Regie, Eigendom), de bewijscijfers, één alinea die GRiDS plaatst, en een oproep tot een gesprek. Geen klantnamen, mailadressen of projectnummers van derden, geen interne ids, hostnames of versienummers.
+
+Opbouw van een lezerspagina: `src/layouts/LezerLayout.astro` (kop met eyebrow, h1, lead; daarna secties met `src/components/Sectie.astro`; film; oproep; de andere drie lezers). De lezers zelf staan in `src/data/lezers.ts` en voeden ook de navigatie en het blok op de homepagina (`src/components/Lezers.astro`). Alleen publiceren wat vandaag werkt; wat in voorbereiding is, staat er met zoveel woorden bij.
+
+**Films.** `src/components/Film.astro` kijkt tijdens de build of `public/film/<id>.mp4` bestaat (met `public/film/<id>.png` als poster). Zo niet, dan staat er een kaart "Film volgt". Een film plaatsen = het bestand in `public/film` zetten en opnieuw bouwen. Ids: `it-spoor`, `managers-tijd`, `gebruikers-verder`, `techneuten-rondleiding`.
 
 Let op bij een nieuw Pages-project: de GitHub-app Cloudflare Pages heeft op het account mdrbimforce toegang tot een vaste lijst repo's. Een nieuwe repo daar toevoegen (github.com/settings/installations, Cloudflare Pages, Configure), anders meldt Pages `disconnected from your Git account` en bouwt een push niet (gezien op 9 oktober 2026).

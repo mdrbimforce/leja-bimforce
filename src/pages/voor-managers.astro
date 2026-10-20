@@ -1,0 +1,122 @@
+---
+// /voor-managers: Leja voor managers (besluit Martijn, 20 oktober 2026: het verhaal per lezer).
+// Kosten en treden uit leja-brain documents/marketing/2026-09-30-leja-positionering-voorstel.md §5 en §9.
+import LezerLayout from '../layouts/LezerLayout.astro';
+import Sectie from '../components/Sectie.astro';
+import Niveaus from '../components/Niveaus.astro';
+
+const kosten = [
+  { bedrag: '400 euro', wat: 'per maand voor de server' },
+  { bedrag: '100 euro', wat: 'per persoon per maand voor een AI-abonnement' },
+  { bedrag: '100 euro', wat: 'per maand voor overige kleine kosten' },
+];
+
+const treden = [
+  { kop: 'Kennismaken', tekst: 'Een talk of workshop, en een demonstratie van onze eigen Leja.' },
+  { kop: 'Proef', tekst: 'Een eigen Leja voor één team, met één proces als route en de domeinkennis ingeladen, zes tot acht weken.' },
+  { kop: 'In gebruik', tekst: 'Beheer, updates en de wekelijkse controleronde; de server bij bimforce of bij de organisatie zelf.' },
+  { kop: 'Uitbouw', tekst: 'Extra routes, skills en koppelingen, bijvoorbeeld met GRiDS, Revit, een ERP-systeem of de mail.' },
+];
+---
+
+<LezerLayout
+  lezer="managers"
+  title="Voor managers"
+  description="Leja voor managers: wie welke beslissing nam en op basis waarvan, de graph in de tijd, voortgang en leermomenten, modules voor medewerkers, en wat het kost."
+  eyebrow="Leja voor managers"
+  kop="Inzicht in de kennis die het bedrijf ontwikkelt."
+  lead={[
+    'Beslissingen, lessen en voortgang staan op één plek, verbonden met het moment waarop ze ontstonden.',
+    'Zo zie je wie wat besloot, wanneer, en op basis van welke informatie.',
+  ]}
+  film={{ id: 'managers-tijd', bijschrift: 'De graph in de tijd: hoe een beslissing ontstaat en wat eraan voorafging' }}
+>
+  <Sectie kop="Wie besliste wat, en waarom" id="beslissingen" lijn={false}>
+    <p>
+      Beslissingen staan in de knowledge graph, verbonden met de sessie waarin ze vielen en met de fragmenten en
+      documenten die eraan ten grondslag lagen. Een beslissing van maanden terug is zo terug te lezen met de afweging erbij.
+    </p>
+  </Sectie>
+
+  <Sectie kop="De graph in de tijd" id="tijd">
+    <p>
+      Een weergave met de tijd als as laat zien hoe de kennis binnen een project en binnen het bedrijf zich ontwikkelt.
+      Vanuit een beslissing ga je terug naar het moment en de context waarin ze ontstond.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Voortgang, fouten en leermomenten" id="voortgang">
+    <p>
+      Projecten, quests (langere trajecten) en taken staan op een bord. Fouten en inzichten hebben een eigen registratie,
+      zodat een les een vaste plek krijgt.
+    </p>
+    <p>
+      Een wekelijkse controleronde voegt losse notities samen tot kennis en meldt wat aandacht vraagt.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Modules voor medewerkers" id="modules">
+    <p>
+      Een complexe informatieworkflow kan een eigen scherm in het dashboard worden, per gebruiker aan of uit te zetten.
+      Collega's gebruiken die workflow dan zonder zelf met een LLM te werken of er toegang toe te hebben.
+    </p>
+    <p>Elke route heeft een van drie niveaus:</p>
+    <Niveaus />
+    <p>
+      Waar een mens beslist, komt het voorstel in <strong>Wacht op jou</strong> te staan, bij degene die het besluit neemt.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Van eigen hulpmiddel naar bedrijfsbrede workflow" id="doorgroeien">
+    <p>
+      Wat een techneut als eigen hulpmiddel bouwt, kan onder regie een workflow voor het hele bedrijf worden, met
+      dezelfde rechten, hetzelfde spoor en dezelfde controleronde als de rest van Leja.
+    </p>
+    <p class="text-ink-2">
+      Eerlijk over de stand: een nieuwe route inpluggen doet nu nog een ontwikkelaar.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Wat het kost" id="kosten">
+    <p>De lopende kosten liggen open op tafel:</p>
+    <dl class="grid gap-3 sm:grid-cols-3">
+      {kosten.map((k) => (
+        <div class="flex flex-col-reverse rounded-card border border-line bg-surface p-4">
+          <dt class="mt-1 text-lj-14 text-ink-3">{k.wat}</dt>
+          <dd class="cijfer text-lj-24 font-semibold text-ink">{k.bedrag}</dd>
+        </div>
+      ))}
+    </dl>
+    <p>
+      Een abonnement dat er al is, zoals Copilot, telt mee als AI-abonnement. De prijs van Leja zelf is op aanvraag.
+    </p>
+    <p>
+      Leja is te huren en te kopen. Bij huur betaal je een maandbedrag; bij koop wordt de organisatie volledig eigenaar,
+      de broncode inbegrepen. Wie met huur begint en later volledig eigendom wil, kan alsnog kopen. Er is dus geen fuik.
+    </p>
+  </Sectie>
+
+  <Sectie kop="Zo begin je" id="treden">
+    <ol class="space-y-3">
+      {treden.map((t, i) => (
+        <li class="flex gap-4 rounded-card border border-line bg-surface p-4">
+          <span class="cijfer flex h-8 w-8 shrink-0 items-center justify-center rounded-pill bg-accent text-on-accent font-semibold">{i + 1}</span>
+          <div>
+            <p class="font-semibold text-ink">{t.kop}</p>
+            <p class="text-ink-2">{t.tekst}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </Sectie>
+
+  <Sectie kop="Leja naast GRiDS" id="grids">
+    <p>
+      GRiDS is de hal met de inventaris: de gegevens van gebouwen en installaties in samenhang, voor de bouw.
+      Leja is de kennispartner die de hal kent en er onder regie in werkt. Samen: GRiDS levert de gegevens,
+      Leja onthoudt wat ermee gebeurt, laat AI erop werken en schrijft terug langs goedgekeurde routes.
+      Elk werkt ook op zichzelf.
+    </p>
+    <p><a href="https://grids.bimforce.com">Naar grids.bimforce.com</a></p>
+  </Sectie>
+</LezerLayout>

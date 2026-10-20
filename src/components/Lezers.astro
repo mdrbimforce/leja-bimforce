@@ -1,0 +1,33 @@
+---
+// Vier kaarten, één per lezer (besluit Martijn, 20 oktober 2026). Op de homepagina onder de hero,
+// en met `zonder` onderaan elke lezerspagina (de andere drie).
+import { lezers, type LezerId } from '../data/lezers';
+
+export interface Props {
+  zonder?: LezerId;
+  kop?: string;
+  intro?: string;
+}
+const { zonder, kop = 'Leja voor jouw rol', intro } = Astro.props;
+const lijst = lezers.filter((l) => l.id !== zonder);
+const kolommen = lijst.length === 4 ? 'sm:grid-cols-2 md:grid-cols-4' : 'sm:grid-cols-3';
+---
+
+<div>
+  <h2 class="text-lj-24">{kop}</h2>
+  {intro && <p class="mt-2 text-ink-2 max-w-prose">{intro}</p>}
+  <ul class:list={['mt-6 grid gap-4', kolommen]}>
+    {lijst.map((l) => (
+      <li>
+        <a
+          href={l.href}
+          class="group flex h-full flex-col rounded-card border border-line bg-surface p-5 no-underline text-ink hover:text-ink hover:border-accent transition-colors"
+        >
+          <span class="text-lj-20 font-semibold text-accent group-hover:text-accent-hover">{l.label}</span>
+          <span class="mt-2 text-lj-16 text-ink-2">{l.zin}</span>
+          <span class="mt-auto pt-4 text-lj-14 font-semibold text-accent group-hover:underline">Lees verder</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>

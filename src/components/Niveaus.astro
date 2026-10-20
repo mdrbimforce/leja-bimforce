@@ -1,0 +1,22 @@
+---
+// De drie niveaus van een route in hun vaste vorm uit het stijlpakket:
+// automatisch (groen, zap), na goedkeuring (amber, user-check), nooit (donker, lock).
+import zap from '../brand/icons/zap.svg?raw';
+import userCheck from '../brand/icons/user-check.svg?raw';
+import lock from '../brand/icons/lock.svg?raw';
+
+const niveaus = [
+  { label: 'automatisch', icoon: zap, klasse: 'bg-ok-soft text-ok' },
+  { label: 'na goedkeuring', icoon: userCheck, klasse: 'bg-spark-soft text-warn' },
+  { label: 'nooit', icoon: lock, klasse: 'bg-never text-on-never' },
+];
+---
+
+<ul class="flex flex-wrap gap-2" aria-label="De drie niveaus van een route">
+  {niveaus.map((n) => (
+    <li class:list={['inline-flex items-center gap-1.5 rounded-pill px-3 py-1 text-lj-14 font-semibold', n.klasse]}>
+      <span aria-hidden="true" class="block h-4 w-4 [&>svg]:h-4 [&>svg]:w-4" set:html={n.icoon} />
+      {n.label}
+    </li>
+  ))}
+</ul>
